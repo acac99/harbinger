@@ -8,13 +8,7 @@ open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Repository
 
-let webApp =
-    choose [
-        GET >=>
-            choose [
-                route "/" >=> text "world"
-            ]
-        setStatusCode 404 >=> text "Not Found" ]
+
 
 let errorHandler (ex : Exception) (logger : ILogger) =
     logger.LogError(ex, "An unhandled exception has occurred while executing the request.")
@@ -27,7 +21,7 @@ let configureApp (app : IApplicationBuilder) =
     | false -> app.UseGiraffeErrorHandler errorHandler)
         .UseHttpsRedirection()
         .UseStaticFiles()
-        .UseGiraffe(webApp)
+        .UseGiraffe(Router.getRoutes)
         
 let configureServices (services : IServiceCollection) =
     services.AddCors()    |> ignore

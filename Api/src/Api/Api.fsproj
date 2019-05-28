@@ -16,6 +16,7 @@
 
     <ItemGroup>
         <None Include="web.config" CopyToOutputDirectory="PreserveNewest" />
+        <Compile Include="Router.fs" />
         <Compile Include="Program.fs" />
         <Content Include="WebRoot\**\*">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
