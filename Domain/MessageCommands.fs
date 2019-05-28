@@ -8,6 +8,10 @@ type CreateCommandResult<'T> = {
 }
 
 
-type CreateMessageCommand() =
+type CreateMessageCommand =
+    {
+        [<Required>]
+        Text: string
+    }
     interface IRequest<CreateCommandResult<bool>>
     

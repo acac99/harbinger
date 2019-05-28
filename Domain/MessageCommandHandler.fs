@@ -4,5 +4,3 @@ open MediatR
 
 type MessageCreateCommandHandler() =
     interface IRequestHandler<CreateMessageCommand, CreateCommandResult<bool>>
-        
-    
