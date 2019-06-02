@@ -2,11 +2,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Repository
 {
-    public static class IServiceCollectionExtension
+    public static class ServicesConfiguration
     {
-        public static void AddMessageRespository(this IServiceCollection services)
+        public static IServiceCollection AddMessageRepository(this IServiceCollection services)
         {
             services.AddSingleton<IRepository<Message>, MessageRepository>();
+            return services;
         }
     }
 }
