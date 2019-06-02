@@ -12,7 +12,7 @@ namespace Repository
         }
 
 
-        public DbSet<Message> Messages { get; set; }
+        public DbSet<MessageDto> Messages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

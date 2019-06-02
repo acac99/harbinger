@@ -2,21 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
-        <RootNamespace>Domain</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="MessageCommandHandler.fs" />
+        <Compile Include="MessageCommands.fs" />
+        <Compile Include="Message.fs" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="MediatR" Version="7.0.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.fsproj" />
-      <ProjectReference Include="..\Repository\Repository.csproj" />
     </ItemGroup>
 
 </Project>

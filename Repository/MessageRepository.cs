@@ -1,6 +1,6 @@
 namespace Repository
 {
-    public class MessageRepository : IRepository<Message>
+    public class MessageRepository : IRepository<MessageDto>
     {
         private HarbingerContext _harbingerContext;
 
@@ -9,11 +9,11 @@ namespace Repository
             _harbingerContext = harbingerContext;
         }
         
-        public Message Create(Message message)
+        public MessageDto Create(MessageDto messageDto)
         {
-            _harbingerContext.Messages.Add(message);
+            _harbingerContext.Messages.Add(messageDto);
             _harbingerContext.SaveChanges();
-            return message;
+            return messageDto;
         }
     }
 }

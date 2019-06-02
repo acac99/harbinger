@@ -1,6 +1,6 @@
 module Domain.MessageCommands
 open MediatR
-open System.ComponentModel.DataAnnotations;
+open System.ComponentModel.DataAnnotations
 
 
 type CreateCommandResult<'T> = {

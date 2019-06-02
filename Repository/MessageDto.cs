@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repository
 {
-    public class Message
+    public class MessageDto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
