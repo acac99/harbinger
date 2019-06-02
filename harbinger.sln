@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Api", "Api\src\Api\Api.fsproj", "{EF5A03FF-43A8-403C-9D4D-F6943FA9FD25}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Domain", "Domain\Domain.fsproj", "{5C893A48-3A63-480E-8F44-4B8453D33B4A}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Application", "Application\Application.fsproj", "{5C893A48-3A63-480E-8F44-4B8453D33B4A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{BB58F548-FEC8-4D14-A535-E8C6FC6C43F4}"
 EndProject
