@@ -7,7 +7,7 @@ let getRoutes: HttpHandler =
         choose [
             POST >=>
                 choose [
-                    route "/message" >=> bindJson<CreateMessageCommand> (Successful.OK)
+                    route "/message" >=> MessageController.CreateMessage
                 ]
             setStatusCode 404 >=> text "Not found" ]
    

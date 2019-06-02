@@ -8,7 +8,7 @@ open MediatR
   let CreateMessage : HttpHandler = fun (next : HttpFunc) (ctx : HttpContext) ->
     task {
       let! command = ctx.BindJsonAsync<CreateMessageCommand>()
-      let mediator = ctx.GetService<Mediator>()
+      let mediator = ctx.GetService<IMediator>()
       let! commandResponse = mediator.Send command
       return! ctx.WriteJsonAsync commandResponse.result
     }
