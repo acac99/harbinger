@@ -5,7 +5,6 @@ open Domain.MessageCommands
 open Domain.Message
 open Repository
 open Domain
-open Domain.MessageCommands
 open System.Threading.Tasks
 
 type MessageCreateCommandHandler(messageRepository : IRepository<Message>) =
@@ -19,6 +18,7 @@ type MessageCreateCommandHandler(messageRepository : IRepository<Message>) =
                 CreatedAt = newMessage.CreatedAt
                 UpdatedAt = newMessage.UpdatedAt
             }
+            sprintf "%A" messageDto.Text |> ignore
  
             messageRepository.Create messageDto |> ignore
             Task.FromResult { result = true }

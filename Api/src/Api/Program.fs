@@ -7,6 +7,9 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Repository
+open MediatR;
+open Domain.MessageCommands
+
 
 
 let errorHandler (ex : Exception) (logger : ILogger) =
@@ -26,6 +29,7 @@ let configureServices (services : IServiceCollection) =
     services.AddCors()    |> ignore
     services.AddGiraffe() |> ignore
     services.AddMessageRepository() |> ignore
+    services.AddMediatR(typeof<CreateMessageCommand>) |> ignore
     
 let configureLogging (builder : ILoggingBuilder) =
     builder.AddFilter(fun l -> l.Equals LogLevel.Error)

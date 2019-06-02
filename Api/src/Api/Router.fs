@@ -1,12 +1,13 @@
 module Api.Router
 
 open Giraffe
+open Domain.MessageCommands
 
 let getRoutes: HttpHandler =
         choose [
-            GET >=>
+            POST >=>
                 choose [
-                    route "/" >=> text "world"
+                    route "/message" >=> bindJson<CreateMessageCommand> (Successful.OK)
                 ]
-            setStatusCode 404 >=> text "Not Found" ]
+            setStatusCode 404 >=> text "Not found" ]
    
