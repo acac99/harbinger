@@ -6,6 +6,16 @@ namespace Repository
 {
     public class MessageDto
     {
+        public MessageDto() 
+        {}
+        public MessageDto(Guid id, string text, DateTime createdAt, DateTime updatedAt)
+        {
+            Id = id;
+            Text = text;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }

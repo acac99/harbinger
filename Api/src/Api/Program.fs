@@ -8,7 +8,7 @@ open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Repository
 open MediatR;
-open Domain.MessageCommands
+open Application.MessageHandler
 
 
 
@@ -29,7 +29,7 @@ let configureServices (services : IServiceCollection) =
     services.AddCors()    |> ignore
     services.AddGiraffe() |> ignore
     services.AddMessageRepository() |> ignore
-    services.AddMediatR(typeof<CreateMessageCommand>) |> ignore
+    services.AddMediatR(typeof<MessageCreateCommandHandler>) |> ignore
     
 let configureLogging (builder : ILoggingBuilder) =
     builder.AddFilter(fun l -> l.Equals LogLevel.Error)

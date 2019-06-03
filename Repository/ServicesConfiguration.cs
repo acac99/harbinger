@@ -7,6 +7,7 @@ namespace Repository
         public static IServiceCollection AddMessageRepository(this IServiceCollection services)
         {
             services.AddSingleton<IRepository<MessageDto>, MessageRepository>();
+            services.AddSingleton<HarbingerContext>();
             return services;
         }
     }
