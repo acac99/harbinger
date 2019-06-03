@@ -7,15 +7,15 @@ open Repository
 open Domain
 open System.Threading.Tasks
 
-type MessageCreateCommandHandler(messageRepository : IRepository<MessageDto>) =
-    interface IRequestHandler<CreateMessageCommand, CreateCommandResult<bool>> with
-        member this.Handle(request : CreateMessageCommand,
-                           cancellationToken : System.Threading.CancellationToken) : System.Threading.Tasks.Task<CreateCommandResult<bool>> =
-            let newMessage = Message.CreateMessage request
-            let messageDto = new MessageDto (newMessage.Id, newMessage.Text, newMessage.CreatedAt, newMessage.UpdatedAt)
-            sprintf "%A" messageDto.Text |> ignore
+type MessageCreateCommandHandler(messageRepository : IRepository<Message.Message>) =
+    interface IRequestHandler<CreateMessageCommand, CreateCommandResult> with
+        
+        member __.Handle(request : CreateMessageCommand,
+                           _ : System.Threading.CancellationToken) : System.Threading.Tasks.Task<CreateCommandResult> =
+            let messageRequest = { Text = request.Text }
+            let newMessage = Message.CreateMessage messageRequest
  
-            messageRepository.Create messageDto |> ignore
-            Task.FromResult { result = true }
+            let createdMessage = messageRepository.Create newMessage
+            Task.FromResult { result = createdMessage }
             
             

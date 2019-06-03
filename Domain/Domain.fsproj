@@ -5,8 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="MessageCommands.fs" />
         <Compile Include="Message.fs" />
+        <Compile Include="MessageCommands.fs" />
     </ItemGroup>
 
     <ItemGroup>

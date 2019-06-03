@@ -7,7 +7,8 @@ open Microsoft.Extensions.Logging
 open Microsoft.Extensions.DependencyInjection
 open Giraffe
 open Repository
-open MediatR;
+open MediatR
+open AutoMapper
 open Application.MessageHandler
 
 
@@ -30,6 +31,7 @@ let configureServices (services : IServiceCollection) =
     services.AddGiraffe() |> ignore
     services.AddMessageRepository() |> ignore
     services.AddMediatR(typeof<MessageCreateCommandHandler>) |> ignore
+    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()) |> ignore
     
 let configureLogging (builder : ILoggingBuilder) =
     builder.AddFilter(fun l -> l.Equals LogLevel.Error)

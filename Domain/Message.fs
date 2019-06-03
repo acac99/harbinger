@@ -1,6 +1,12 @@
 module Domain.Message
 open System
-open Domain.MessageCommands
+open MediatR
+
+
+type MessageRequest = {
+    Text: string
+} 
+
 
 type Message = {
   Id: Guid
@@ -8,7 +14,7 @@ type Message = {
   CreatedAt: DateTime
   UpdatedAt: DateTime
 } with
-  static member CreateMessage (messageRequest: CreateMessageCommand) = 
+  static member CreateMessage (messageRequest: MessageRequest) = 
     let newMessage = {
       Id = Guid.Empty
       Text = messageRequest.Text

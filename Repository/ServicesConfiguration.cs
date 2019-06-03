@@ -1,3 +1,4 @@
+using Domain;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Repository
@@ -6,7 +7,7 @@ namespace Repository
     {
         public static IServiceCollection AddMessageRepository(this IServiceCollection services)
         {
-            services.AddSingleton<IRepository<MessageDto>, MessageRepository>();
+            services.AddSingleton<IRepository<Message.Message>, MessageRepository>();
             services.AddSingleton<HarbingerContext>();
             return services;
         }
