@@ -6,8 +6,7 @@ namespace Repository
 {
     public class MessageDto : EntityBase
     {
-        public MessageDto() 
-        {}
+        public MessageDto() {}
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
