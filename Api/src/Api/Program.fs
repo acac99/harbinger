@@ -11,32 +11,30 @@ open MediatR
 open AutoMapper
 open Application.MessageHandler
 
-
-
 let errorHandler (ex : Exception) (logger : ILogger) =
-    logger.LogError(ex, "An unhandled exception has occurred while executing the request.")
+    logger.LogError
+        (ex, "An unhandled exception has occurred while executing the request.")
     clearResponse >=> setStatusCode 500 >=> text ex.Message
 
 let configureApp (app : IApplicationBuilder) =
     let env = app.ApplicationServices.GetService<IHostingEnvironment>()
     (match env.IsDevelopment() with
-    | true  -> app.UseDeveloperExceptionPage()
-    | false -> app.UseGiraffeErrorHandler errorHandler)
+     | true -> app.UseDeveloperExceptionPage()
+     | false -> app.UseGiraffeErrorHandler errorHandler)
         .UseHttpsRedirection()
         .UseStaticFiles()
         .UseGiraffe(Router.getRoutes)
-        
+
 let configureServices (services : IServiceCollection) =
-    services.AddCors()    |> ignore
+    services.AddCors() |> ignore
     services.AddGiraffe() |> ignore
     services.AddMessageRepository() |> ignore
     services.AddMediatR(typeof<MessageCreateCommandHandler>) |> ignore
     services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()) |> ignore
-    
+
 let configureLogging (builder : ILoggingBuilder) =
-    builder.AddFilter(fun l -> l.Equals LogLevel.Error)
-           .AddConsole()
-           .AddDebug() |> ignore
+    builder.AddFilter(fun l -> l.Equals LogLevel.Error).AddConsole().AddDebug()
+    |> ignore
 
 [<EntryPoint>]
 let main _ =
@@ -47,4 +45,4 @@ let main _ =
         .ConfigureLogging(configureLogging)
         .Build()
         .Run()
-    0        
+    0
